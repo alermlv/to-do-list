@@ -9,6 +9,8 @@
   </head>
   <body>
     <main class="content">
+
+      <!-- Add task section -->
       <section class="add-task-section">
         <div class="title">To-do list</div>
         <div class="add-task-form">
@@ -20,6 +22,23 @@
             <input type="text" id="task-description-input" class="task-description-input" placeholder="Write a description...">
             <input type="text" id="task-date-input" class="task-date-input" placeholder="Wen, March 4, 2026">
             <button type="button" class="button button--secondary important-task-button">Star</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasks section -->
+      <section class="tasks-section">
+        <div class="tasks-block">
+          <div class="tasks-title">Important</div>
+          <div class="tasks-list">
+            <div class="task">
+              <button type="button" class="button button--check complete-task-button">Chek</button>
+              <div class="task-text">
+                <div class="task-label">Read a book</div>
+                <div class="task-description">Read a JavaScript tutorial book</div>
+              </div>
+              <button type="button" class="button button--icon delete-task-button">Delete</button>
+            </div>
           </div>
         </div>
       </section>
