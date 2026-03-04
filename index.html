@@ -7,5 +7,22 @@
     <script src="main.js" defer></script>
     <title>To-do list</title>
   </head>
-  <body></body>
+  <body>
+    <main class="content">
+      <section class="add-task-section">
+        <div class="title">To-do list</div>
+        <div class="add-task-form">
+          <div class="add-task-form__top">
+            <input type="text" id="task-label-input" class="task-label-input" placeholder="Write a task...">
+            <button type="button" class="button button--primary add-task-button">Add task</button>
+          </div>
+          <div class="add-task-form__bottom">
+            <input type="text" id="task-description-input" class="task-description-input" placeholder="Write a description...">
+            <input type="text" id="task-date-input" class="task-date-input" placeholder="Wen, March 4, 2026">
+            <button type="button" class="button button--secondary important-task-button">Star</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
