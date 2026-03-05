@@ -29,13 +29,27 @@
       <!-- Tasks section -->
       <section class="tasks-section">
         <div class="tasks-block">
-          <div class="tasks-title">Important</div>
-          <div class="tasks-list">
-            <div class="task">
+          <div class="tasks-block__title">Important</div>
+          <div class="tasks-block__list">
+            <div class="task-item">
               <button type="button" class="button button--check complete-task-button">Chek</button>
-              <div class="task-text">
-                <div class="task-label">Read a book</div>
-                <div class="task-description">Read a JavaScript tutorial book</div>
+              <div class="task-item__content">
+                <div class="task-item__name">Read a book</div>
+                <div class="task-item__description">Read a JavaScript tutorial book</div>
+              </div>
+              <button type="button" class="button button--icon delete-task-button">Delete</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tasks-block">
+          <div class="tasks-block__title">Completed</div>
+          <div class="tasks-block__list">
+            <div class="task-item task-item--completed">
+              <button type="button" class="button button--check complete-task-button complete-task-button--done">Chek</button>
+              <div class="task-item__content">
+                <div class="task-item__name">Read a book</div>
+                <div class="task-item__description">Read a JavaScript tutorial book</div>
               </div>
               <button type="button" class="button button--icon delete-task-button">Delete</button>
             </div>
