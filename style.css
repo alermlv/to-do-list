@@ -22,7 +22,7 @@ input {
 ========== */
 
 html {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.2;
 }
 
@@ -40,7 +40,7 @@ h1 {
 input {
   background: #eeeeee;
   border-radius: 12px;
-  padding: 0 20px;
+  padding: 0 16px;
   height: 56px;
   color: #777777;
 }
@@ -124,7 +124,7 @@ button {
 .add-task-section {
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 48px;
   gap: 32px;
 }
 
@@ -161,7 +161,7 @@ button {
 .tasks-section {
   display: flex;
   flex-direction: column;
-  margin-top: 32px;
+  margin-top: 48px;
   gap: 32px;
 }
 
@@ -184,6 +184,7 @@ button {
 
 .task-item {
   display: flex;
+  min-height: 56px;
   gap: 16px;
   background: #eeeeee;
   padding: 16px;
@@ -193,7 +194,7 @@ button {
 .task-item__content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   flex: 1;
 }
 
