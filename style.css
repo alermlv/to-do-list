@@ -23,7 +23,7 @@ input {
 
 html {
   font-size: 18px;
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
 body {
@@ -78,7 +78,7 @@ button {
 .button--checkbox {
   width: 24px;
   height: 24px;
-  background: #fff;
+  background: transparent;
   border: 2px solid #2c2c2c;
   border-radius: 6px;
 }
@@ -98,6 +98,11 @@ button {
   color: #1c1c1c;
 }
 
+.complete-task-button--done {
+  background: #777777;
+  border: none;
+}
+
 /* ==========
   Layout
 ========== */
@@ -106,8 +111,6 @@ button {
   max-width: 736px;
   margin: 0 auto;
   padding: 0 16px;
-  display: flex;
-  flex-direction: column;
 }
 
 /* ==========
@@ -154,4 +157,47 @@ button {
 .tasks-section {
   display: flex;
   flex-direction: column;
+  margin-top: 32px;
+  gap: 32px;
+}
+
+.tasks-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tasks-block__title {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.tasks-block__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.task-item {
+  display: flex;
+  gap: 16px;
+  background: #eeeeee;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.task-item__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.task-item__description {
+  color: #777777;
+}
+
+.task-item--completed .task-item__content {
+  color: #777777;
+  text-decoration: line-through;
 }
