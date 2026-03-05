@@ -1,0 +1,114 @@
+/* ==========
+  CSS reset
+========== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input {
+  font: inherit;
+  border: none;
+  background: none;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #2c2c2c;
+}
+
+/* ==========
+  Base styles
+========== */
+
+html {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #2c2c2c;
+  background: #fff;
+}
+
+/* ==========
+  Button
+========== */
+
+button {
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background 0.15s ease;
+}
+
+.button--primary {
+  font-weight: 900;
+  width: 112px;
+  height: 56px;
+  background: #2c2c2c;
+  color: #eaeaea;
+}
+
+.button--important {
+  width: 56px;
+  height: 56px;
+  background: #eeeeee;
+  color: #777777;
+}
+
+.button--checkbox {
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border: 2px solid #2c2c2c;
+  border-radius: 6px;
+}
+
+.button--icon {
+  width: 24px;
+  height: 24px;
+  background: #2c2c2c;
+  border-radius: 6px;
+}
+
+.button--primary:hover,
+.button--checkbox:hover,
+.button--icon:hover {
+  background: #1c1c1c;
+}
+
+/* ==========
+  Layout
+========== */
+
+.content {
+  max-width: 736px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========
+  Add tasks section
+========== */
+
+.add-task-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========
+  Tasks section
+========== */
+
+.tasks-section {
+  display: flex;
+  flex-direction: column;
+}
