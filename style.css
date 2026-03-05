@@ -17,11 +17,6 @@ input {
   background: none;
 }
 
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid #2c2c2c;
-}
-
 /* ==========
   Base styles
 ========== */
@@ -37,6 +32,24 @@ body {
   background: #fff;
 }
 
+h1 {
+  font-size: 40px;
+  font-weight: 900;
+}
+
+input {
+  background: #eeeeee;
+  border-radius: 12px;
+  padding: 0 20px;
+  height: 56px;
+  color: #777777;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #2c2c2c;
+}
+
 /* ==========
   Button
 ========== */
@@ -49,15 +62,15 @@ button {
 
 .button--primary {
   font-weight: 900;
-  width: 112px;
   height: 56px;
+  flex: 0 0 112px;
   background: #2c2c2c;
   color: #eaeaea;
 }
 
 .button--important {
-  width: 56px;
   height: 56px;
+  flex: 0 0 56px;
   background: #eeeeee;
   color: #777777;
 }
@@ -71,16 +84,18 @@ button {
 }
 
 .button--icon {
-  width: 24px;
-  height: 24px;
-  background: #2c2c2c;
-  border-radius: 6px;
+  color: #777777;
+  flex: 0 0 25px;
 }
 
 .button--primary:hover,
-.button--checkbox:hover,
-.button--icon:hover {
+.button--checkbox:hover {
   background: #1c1c1c;
+}
+
+.button--important:hover,
+.button--icon:hover {
+  color: #1c1c1c;
 }
 
 /* ==========
@@ -102,7 +117,35 @@ button {
 .add-task-section {
   display: flex;
   flex-direction: column;
+  margin-top: 80px;
+  gap: 32px;
 }
+
+.add-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add-task-form__top {
+  display: flex;
+  gap: 12px;
+}
+
+.add-task-form__bottom {
+  display: flex;
+  gap: 12px;
+}
+
+.task-name-input,
+.task-description-input {
+  flex: 1;
+}
+
+.task-date-input {
+  flex: 0 0 224px;
+}
+
 
 /* ==========
   Tasks section
