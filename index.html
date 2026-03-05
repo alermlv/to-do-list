@@ -12,18 +12,18 @@
 
       <!-- Add task section -->
       <section class="add-task-section">
-        <div class="title">To-do list</div>
-        <div class="add-task-form">
+        <h1 class="title">To-do list</h1>
+        <form id="add-task-form" class="add-task-form">
           <div class="add-task-form__top">
-            <input type="text" id="task-label-input" class="task-label-input" placeholder="Write a task...">
-            <button type="button" class="button button--primary add-task-button">Add task</button>
+            <input type="text" id="task-name-input" class="task-name-input" placeholder="Write a task..." minlength="1" required>
+            <button type="submit" class="button button--primary add-task-button">Add task</button>
           </div>
           <div class="add-task-form__bottom">
             <input type="text" id="task-description-input" class="task-description-input" placeholder="Write a description...">
-            <input type="text" id="task-date-input" class="task-date-input" placeholder="Wen, March 4, 2026">
-            <button type="button" class="button button--secondary important-task-button">Star</button>
+            <input type="date" id="task-date-input" class="task-date-input">
+            <button type="button" class="button button--secondary important-task-button" aria-pressed="false">Star</button>
           </div>
-        </div>
+        </form>
       </section>
 
       <!-- Tasks section -->
