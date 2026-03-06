@@ -50,7 +50,7 @@ function generateId() {
 }
 
 /* ==========
-  Form section
+  Add task
 ========== */
 
 importantButtonElement.addEventListener("click", (event) => {
@@ -162,4 +162,46 @@ function createTaskItem(task) {
   `;
 
   return taskItem;
+}
+
+/* ==========
+  Complete & Delete task
+========== */
+
+tasksSection.addEventListener("click", (event) => {
+  const clickedTaskItem = event.target.closest(".task-item");
+  
+  if (!clickedTaskItem) return;
+
+  const clickedTaskId = clickedTaskItem.dataset.id;
+
+  const completeButton = event.target.closest(".complete-task-button");
+  const deleteButton = event.target.closest(".delete-task-button");
+
+  if (completeButton) {
+    completeTask(clickedTaskId);
+  }
+
+  if (deleteButton) {
+    deleteTask(clickedTaskId);
+  }
+});
+
+function completeTask(id) {
+  const task = tasks.find(taskItem => taskItem.id === id);
+  task.isCompleted = true;
+  renderAllTasks();
+}
+
+function deleteTask(id) {
+  tasks = tasks.filter(taskItem => taskItem.id !== id);
+  renderAllTasks();
+}
+
+function renderAllTasks() {
+  tasksSection.innerHTML = "";
+
+  tasks.forEach((task) => {
+    renderTask(task);
+  });
 }
