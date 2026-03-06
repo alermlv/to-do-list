@@ -23,12 +23,8 @@ let isImportantSelected = false;
 ========== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (tasks.length === 0) {
-    renderEmptyState();
-    return;
-  }
-  
   setTodayDay();
+  loadTasks();
   nameInputElement.focus();
 });
 
@@ -50,6 +46,23 @@ function createTaskObject() {
     isImportant: isImportantSelected,
     isCompleted: false,
   }
+}
+
+/* ==========
+  LocalStorage
+========== */
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const savedTasks = localStorage.getItem("tasks");
+
+  if (!savedTasks) return;
+
+  tasks = JSON.parse(savedTasks);
+  renderAllTasks();
 }
 
 /* ==========
@@ -78,6 +91,7 @@ addTaskFormElement.addEventListener("submit", (event) => {
 
 function addTask(task) {
   tasks.push(task);
+  saveTasks();
   renderTask(task);
 }
 
@@ -180,11 +194,13 @@ function completeTask(id) {
   if (!task) return;
 
   task.isCompleted = true;
+  saveTasks();
   renderAllTasks();
 }
 
 function deleteTask(id) {
   tasks = tasks.filter(taskItem => taskItem.id !== id);
+  saveTasks();
   renderAllTasks();
 }
 
