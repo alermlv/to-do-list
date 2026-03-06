@@ -23,6 +23,11 @@ let isImportantSelected = false;
 ========== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (tasks.length === 0) {
+    renderEmptyState();
+    return;
+  }
+  
   setTodayDay();
   nameInputElement.focus();
 });
@@ -65,6 +70,9 @@ addTaskFormElement.addEventListener("submit", (event) => {
 
   nameInputElement.value = "";
   descriptionInputElement.value = "";
+  isImportantSelected = false;
+  importantButtonElement.classList.remove("active");
+  importantButtonElement.setAttribute("aria-pressed", isImportantSelected);
   nameInputElement.focus();
 });
 
@@ -168,6 +176,9 @@ tasksSection.addEventListener("click", (event) => {
 
 function completeTask(id) {
   const task = tasks.find(taskItem => taskItem.id === id);
+
+  if (!task) return;
+
   task.isCompleted = true;
   renderAllTasks();
 }
@@ -180,7 +191,19 @@ function deleteTask(id) {
 function renderAllTasks() {
   tasksSection.innerHTML = "";
 
+  if (tasks.length === 0) {
+    renderEmptyState();
+    return;
+  }
+
   tasks.forEach((task) => {
     renderTask(task);
   });
+}
+
+function renderEmptyState() {
+  const noTasks = document.createElement("div");
+  noTasks.classList.add("no-tasks");
+  noTasks.textContent = "No tasks yet";
+  tasksSection.appendChild(noTasks);
 }
