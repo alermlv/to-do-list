@@ -53,9 +53,11 @@ function generateId() {
   Add task
 ========== */
 
-importantButtonElement.addEventListener("click", (event) => {
+importantButtonElement.addEventListener("click", () => {
   isImportantSelected = !isImportantSelected;
   importantButtonElement.classList.toggle("active");
+
+  importantButtonElement.setAttribute("aria-pressed", isImportantSelected);
 })
 
 addTaskFormElement.addEventListener("submit", (event) => {
