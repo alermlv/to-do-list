@@ -144,11 +144,6 @@ button {
   color: var(--color-white);
 }
 
-.complete-task-button--done {
-  background: var(--color-gray-1);
-  border: none;
-}
-
 /* ==========
   Layout
 ========== */
@@ -264,6 +259,11 @@ button {
 
 .task-item__description {
   color: var(--color-gray-1);
+}
+
+.task-item--completed .complete-task-button {
+  background: var(--color-gray-1);
+  border: none;
 }
 
 .task-item--completed .task-item__content {
