@@ -83,6 +83,8 @@ addTaskFormElement.addEventListener("submit", (event) => {
 });
 
 function addTask(task) {
+  if (!task.name) return;
+  
   tasks.push(task);
   saveTasks();
   renderAllTasks();
@@ -256,10 +258,6 @@ function renderEmptyState() {
 ========== */
 
 function sortTasks(tasks) {
-  const today = new Date()
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-
   return [...tasks].sort((a, b) => {
     
     if (a.isImportant !== b.isImportant) {
