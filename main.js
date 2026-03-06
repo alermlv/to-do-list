@@ -1,3 +1,7 @@
+/* ==========
+  DOM elements
+========== */
+
 const nameInputElement = document.querySelector(".task-name-input");
 const descriptionInputElement = document.querySelector(".task-description-input");
 const dateInputElement = document.querySelector(".task-date-input");
@@ -5,12 +9,30 @@ const addTaskFormElement = document.querySelector(".add-task-form");
 const importantButtonElement = document.querySelector(".important-task-button");
 const tasksSection = document.querySelector(".tasks-section");
 
+/* ==========
+  State
+========== */
+
 let tasks = [];
 let isImportantSelected = false;
 
+/* ==========
+  Initialization
+========== */
+
 document.addEventListener("DOMContentLoaded", () => {
   setTodayDay();
+  nameInputElement.focus();
 });
+
+function setTodayDay() {
+  const today = new Date().toISOString().split("T")[0];
+  dateInputElement.value = today;
+}
+
+/* ==========
+  Task object
+========== */
 
 function createTaskObject() {
   return {
@@ -27,10 +49,9 @@ function generateId() {
   return Date.now().toString();
 }
 
-function setTodayDay() {
-  const today = new Date().toISOString().split("T")[0];
-  dateInputElement.value = today;
-}
+/* ==========
+  Form section
+========== */
 
 importantButtonElement.addEventListener("click", (event) => {
   isImportantSelected = !isImportantSelected;
@@ -41,6 +62,10 @@ addTaskFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
   const newTask = createTaskObject();
   addTask(newTask);
+
+  nameInputElement.value = "";
+  descriptionInputElement.value = "";
+  nameInputElement.focus();
 });
 
 function addTask(task) {
