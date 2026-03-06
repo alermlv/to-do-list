@@ -34,38 +34,6 @@ function setTodayDay() {
 }
 
 /* ==========
-  Task object
-========== */
-
-function createTaskObject() {
-  return {
-    id: generateId(),
-    name: nameInputElement.value.trim(),
-    description: descriptionInputElement.value.trim(),
-    date: dateInputElement.value,
-    isImportant: isImportantSelected,
-    isCompleted: false,
-  }
-}
-
-/* ==========
-  LocalStorage
-========== */
-
-function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-function loadTasks() {
-  const savedTasks = localStorage.getItem("tasks");
-
-  if (!savedTasks) return;
-
-  tasks = JSON.parse(savedTasks);
-  renderAllTasks();
-}
-
-/* ==========
   Add task
 ========== */
 
@@ -82,12 +50,49 @@ addTaskFormElement.addEventListener("submit", (event) => {
   nameInputElement.focus();
 });
 
+function createTaskObject() {
+  return {
+    id: generateId(),
+    name: nameInputElement.value.trim(),
+    description: descriptionInputElement.value.trim(),
+    date: dateInputElement.value,
+    isImportant: isImportantSelected,
+    isCompleted: false,
+  }
+}
+
 function addTask(task) {
   if (!task.name) return;
   
   tasks.push(task);
   saveTasks();
   renderAllTasks();
+}
+
+/* ==========
+  Rendering
+========== */
+
+function renderAllTasks() {
+  tasksSection.innerHTML = "";
+
+  if (tasks.length === 0) {
+    renderEmptyState();
+    return;
+  }
+
+  const sortedTasks = sortTasks(tasks);
+
+  sortedTasks.forEach((task) => {
+    renderTask(task);
+  });
+}
+
+function renderEmptyState() {
+  const noTasks = document.createElement("div");
+  noTasks.classList.add("no-tasks");
+  noTasks.textContent = "No tasks yet";
+  tasksSection.appendChild(noTasks);
 }
 
 function renderTask(task) {
@@ -107,6 +112,10 @@ function renderTask(task) {
 
   tasksList.appendChild(taskItem);
 }
+
+/* ==========
+  Create DOM elements
+========== */
 
 function getOrCreateTasksBlock(title) {
   let block = document.querySelector(`[data-block="${title}"]`);
@@ -185,6 +194,10 @@ function createTaskItem(task) {
   return taskItem;
 }
 
+/* ==========
+  Important task button
+========== */
+
 importantButtonElement.addEventListener("click", () => {
   isImportantSelected = !isImportantSelected;
   importantButtonElement.classList.toggle("active");
@@ -231,28 +244,6 @@ function deleteTask(id) {
   renderAllTasks();
 }
 
-function renderAllTasks() {
-  tasksSection.innerHTML = "";
-
-  if (tasks.length === 0) {
-    renderEmptyState();
-    return;
-  }
-
-  const sortedTasks = sortTasks(tasks);
-
-  sortedTasks.forEach((task) => {
-    renderTask(task);
-  });
-}
-
-function renderEmptyState() {
-  const noTasks = document.createElement("div");
-  noTasks.classList.add("no-tasks");
-  noTasks.textContent = "No tasks yet";
-  tasksSection.appendChild(noTasks);
-}
-
 /* ==========
   Sort tasks
 ========== */
@@ -273,4 +264,21 @@ function sortTasks(tasks) {
 
     return dateA - dateB;
   });
+}
+
+/* ==========
+  LocalStorage
+========== */
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const savedTasks = localStorage.getItem("tasks");
+
+  if (!savedTasks) return;
+
+  tasks = JSON.parse(savedTasks);
+  renderAllTasks();
 }
