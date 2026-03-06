@@ -18,7 +18,7 @@ function createTaskObject() {
     description: descriptionInputElement.value.trim(),
     date: dateInputElement.value,
     isImportant: isImportantSelected,
-    isComplete: false,
+    isCompleted: false,
   }
 }
 
@@ -37,8 +37,45 @@ importantButtonElement.addEventListener("click", (event) => {
 })
 
 addTaskFormElement.addEventListener("submit", () => {
-  const task = createTaskObject();
-  tasks.push(task);
+  const newTask = createTaskObject();
+  addTask(newTask);
 });
 
+function addTask(task) {
+  tasks.push(task);
+  renderTask(task);
+}
 
+function renderTask(task) {
+  let blockTitle;
+
+  if (task.isCompleted) {
+    blockTitle = "Completed";
+  } else if (task.isImportant) {
+    blockTitle = "Important";
+  } else {
+    blockTitle = formatDate(task.date);
+  }
+  
+}
+
+function formatDate(date) {
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  const selectedDate = new Date(date);
+
+  if (selectedDate.toDateString() === today.toDateString()) {
+    return "Today";
+  }
+  
+  if (selectedDate.toDateString() === tomorrow.toDateString()) {
+    return "Tomorrow";
+  }
+
+  return selectedDate.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  });
+}
