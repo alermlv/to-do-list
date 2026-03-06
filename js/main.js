@@ -69,13 +69,6 @@ function loadTasks() {
   Add task
 ========== */
 
-importantButtonElement.addEventListener("click", () => {
-  isImportantSelected = !isImportantSelected;
-  importantButtonElement.classList.toggle("active");
-
-  importantButtonElement.setAttribute("aria-pressed", isImportantSelected);
-})
-
 addTaskFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
   const newTask = createTaskObject();
@@ -92,7 +85,7 @@ addTaskFormElement.addEventListener("submit", (event) => {
 function addTask(task) {
   tasks.push(task);
   saveTasks();
-  renderTask(task);
+  renderAllTasks();
 }
 
 function renderTask(task) {
@@ -165,6 +158,13 @@ function createTaskItem(task) {
   return taskItem;
 }
 
+importantButtonElement.addEventListener("click", () => {
+  isImportantSelected = !isImportantSelected;
+  importantButtonElement.classList.toggle("active");
+
+  importantButtonElement.setAttribute("aria-pressed", isImportantSelected);
+});
+
 /* ==========
   Complete & Delete task
 ========== */
@@ -212,7 +212,9 @@ function renderAllTasks() {
     return;
   }
 
-  tasks.forEach((task) => {
+  const sortedTasks = sortTasks(tasks);
+
+  sortedTasks.forEach((task) => {
     renderTask(task);
   });
 }
@@ -222,4 +224,30 @@ function renderEmptyState() {
   noTasks.classList.add("no-tasks");
   noTasks.textContent = "No tasks yet";
   tasksSection.appendChild(noTasks);
+}
+
+/* ==========
+  Sort tasks
+========== */
+
+function sortTasks(tasks) {
+  const today = new Date()
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  return [...tasks].sort((a, b) => {
+    
+    if (a.isImportant !== b.isImportant) {
+      return a.isImportant ? -1 : 1;
+    }
+
+    if (a.isCompleted !== b.isCompleted) {
+      return a.isCompleted ? 1 : -1;
+    }
+
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+
+    return dateA - dateB;
+  });
 }
