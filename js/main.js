@@ -1,3 +1,5 @@
+import { generateId, formatDate } from './utils.js';
+
 /* ==========
   DOM elements
 ========== */
@@ -45,10 +47,6 @@ function createTaskObject() {
   }
 }
 
-function generateId() {
-  return Date.now().toString();
-}
-
 /* ==========
   Add task
 ========== */
@@ -91,27 +89,6 @@ function renderTask(task) {
   const taskItem = createTaskItem(task);
 
   tasksList.appendChild(taskItem);
-}
-
-function formatDate(date) {
-  const today = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-
-  const selectedDate = new Date(date);
-
-  if (selectedDate.toDateString() === today.toDateString()) {
-    return "Today";
-  }
-  
-  if (selectedDate.toDateString() === tomorrow.toDateString()) {
-    return "Tomorrow";
-  }
-
-  return selectedDate.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-  });
 }
 
 function getOrCreateTasksBlock(title) {
