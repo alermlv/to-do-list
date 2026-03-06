@@ -139,6 +139,11 @@ button {
   background: var(--color-gray-2);
 }
 
+.button--important.active {
+  background: var(--color-black-1);
+  color: var(--color-white);
+}
+
 .complete-task-button--done {
   background: var(--color-gray-1);
   border: none;
