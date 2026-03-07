@@ -149,7 +149,7 @@ button {
 ========== */
 
 .content {
-  max-width: 736px;
+  max-width: 768px;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -239,17 +239,6 @@ button {
   color: var(--color-gray-2);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .task-item__content {
   display: flex;
   flex-direction: column;
@@ -276,4 +265,19 @@ button {
   text-transform: uppercase;
   align-self: center;
   color: var(--color-gray-1);
+}
+
+/* ==========
+  Animation
+========== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
