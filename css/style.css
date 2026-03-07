@@ -58,6 +58,7 @@ input {
   padding: 0 16px;
   height: 56px;
   color: var(--color-black-1);
+  appearance: none;
 }
 
 input::placeholder {
@@ -71,6 +72,14 @@ input:hover {
 button:focus-visible,
 input:focus-visible {
   outline: 2px solid var(--color-gray-2);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-black-1);
+  box-shadow: 0 0 0px 1000px var(--color-gray-3) inset;
+  transition: background-color 9999s ease-in-out;
 }
 
 /* ==========
